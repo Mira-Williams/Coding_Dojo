@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+
+    <script>
+        $('document').ready(function(){
+            var mode = 'hide';
+            var modePrint = 'Hide';
+            var temp1 = '';
+            var temp2 = '';
+
+            document.getElementById('modePar').innerHTML = 'Mode: ' + modePrint;
+
+            $('.changeMode').click(function(){
+                if(mode === 'hide'){
+                    mode = 'swap1';
+                    modePrint = 'Swap';
+                }
+                else if(mode === 'swap1' | mode === 'swap2'){
+                    mode = 'hide';
+                    modePrint = 'Hide';
+                }   
+                document.getElementById('modePar').innerHTML = 'Mode: ' + modePrint;
+            });
+
+            $('.reset').click(function(){
+                $('img').css('visibility', 'visible');
+                $('.img_1').attr('src', 'images/image1.png');
+                $('.img_2').attr('src', 'images/image2.png');
+                $('.img_3').attr('src', 'images/image3.png');
+                $('.img_4').attr('src', 'images/image4.png');
+                $('.img_5').attr('src', 'images/image5.png');
+                $('.img_6').attr('src', 'images/image6.png');
+                $('.img_7').attr('src', 'images/image7.png');
+                $('.img_8').attr('src', 'images/image8.png');
+                $('.img_9').attr('src', 'images/image9.png');
+                $('.img_10').attr('src', 'images/image10.png');
+                $('.img_11').attr('src', 'images/image11.png');
+                $('.img_12').attr('src', 'images/image12.png');
+            });
+
+            $('.showAll').click(function(){
+                $('img').css('visibility', 'visible');
+            });
+
+            $('img').click(function(){
+                if(mode === 'hide'){
+                    console.log('poop');
+                    $(this).css('visibility', 'hidden');
+                }
+                else if(mode === 'swap1'){
+                    temp1 = $(this).attr('src');
+                    $(this).addClass('swap1');
+                    $(this).addClass('borderBlue');
+                    mode = 'swap2';
+                }
+                else if(mode === 'swap2'){
+                    temp2 = $(this).attr('src');
+                    $('.swap1').attr('src', temp2);
+                    $('.swap1').removeClass('borderBlue');
+                    $('.swap1').removeClass('swap1');
+                    $(this).attr('src', temp1);
+                    mode = 'swap1';
+                }
+            });
+        });
+    </script>
+
+</head>
+<body>
+    <button class='showAll'>Show All</button>
+    <button class='reset'>Reset</button>
+    <button class='changeMode'>Change Mode</button>
+
+    <p id='modePar'></p>
+
+    <img src="images/image1.png" alt="img_1" class="img_1">
+    <img src="images/image2.png" alt="img_2" class="img_2">
+    <img src="images/image3.png" alt="img_3" class="img_3">
+    <img src="images/image4.png" alt="img_4" class="img_4">
+    <img src="images/image5.png" alt="img_5" class="img_5">
+    <img src="images/image6.png" alt="img_6" class="img_6">
+    <img src="images/image7.png" alt="img_7" class="img_7">
+    <img src="images/image8.png" alt="img_8" class="img_8">
+    <img src="images/image9.png" alt="img_9" class="img_9">
+    <img src="images/image10.png" alt="img_10" class="img_10">
+    <img src="images/image11.png" alt="img_11" class="img_11">
+    <img src="images/image12.png" alt="img_12" class="img_12">
+</body>
+</html>
