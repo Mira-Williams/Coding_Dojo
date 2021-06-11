@@ -1,5 +1,0 @@
-if collide
-event hit 
-sub yellow, red 
-function
-draw flag with rect dimensions 
